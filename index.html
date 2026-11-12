@@ -1,11 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Power Sector Regulatory & Technical Advisory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F2F5F6; --surface:#FFFFFF; --ink:#0E2A33; --muted:#53656D; --line:#D3DDE1;
+  --amber:#E59F00; --amber-ink:#0E2A33; --green:#1F7A57; --accent-soft:#FFF3D6;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0C1D24; --surface:#13303A; --ink:#EAF1F3; --muted:#9DB2BA; --line:#264651;
+    --amber:#F2B233; --amber-ink:#0C1D24; --green:#4FC194; --accent-soft:#2B2A18; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0C1D24; --surface:#13303A; --ink:#EAF1F3; --muted:#9DB2BA; --line:#264651;
+  --amber:#F2B233; --amber-ink:#0C1D24; --green:#4FC194; --accent-soft:#2B2A18; color-scheme:dark;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.6 "IBM Plex Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Newsreader",Georgia,serif;font-weight:600;line-height:1.15;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.25rem}
+header.top{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 0;gap:1rem;flex-wrap:wrap}
+.brand{font-family:"Newsreader",serif;font-weight:600;font-size:1.2rem;text-decoration:none}
+nav a{margin-left:1.2rem;text-decoration:none;color:var(--muted);font-weight:500}
+nav a:hover{color:var(--ink)}
+.hero{padding:3rem 0 1.5rem}
+.hero h1{font-size:clamp(2.2rem,6vw,3.9rem);max-width:15ch}
+.hero p.lead{max-width:60ch;color:var(--muted);font-size:1.12rem;margin:1.2rem 0 0}
+
+/* Single-line diagram */
+.sld{margin-top:2.5rem;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:1.5rem 1rem 1.2rem}
+.sld-title{margin:0 0 1.2rem;color:var(--muted);font-size:.95rem}
+.bus{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:.8rem}
+.node{background:var(--bg);border:1px solid var(--line);border-radius:8px;color:var(--ink);font:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;gap:.5rem;padding:1rem;text-align:left;transition:border-color .2s,background .2s}
+.node .dot{width:42px;height:42px;border-radius:8px;background:var(--surface);border:2px solid var(--ink);display:grid;place-items:center;font-size:1.2rem}
+.node .desc{font-size:.85rem;color:var(--muted);line-height:1.4}
+.node span.lbl{font-size:1.05rem;font-weight:600;line-height:1.25}
+.node:hover{border-color:var(--amber)}
+.node[aria-selected="true"]{background:var(--accent-soft);border-color:var(--amber);box-shadow:inset 0 -4px 0 var(--amber)}
+.node[aria-selected="true"] .dot{background:var(--amber);border-color:var(--amber);color:var(--amber-ink)}
+.node[aria-selected="true"] .lbl{font-weight:600}
+.panel{margin-top:1.5rem;border-top:1px dashed var(--line);padding-top:1.3rem;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.panel h3{font-size:1.6rem;margin-bottom:.5rem}
+.panel p{margin:.2rem 0;color:var(--muted)}
+.panel ul{margin:.3rem 0 0;padding-left:1.1rem}
+.panel li{margin:.25rem 0}
+.panel h4{margin:0 0 .3rem;font-size:.95rem}
+
+section{padding:3.2rem 0;border-top:1px solid var(--line)}
+section h2{font-size:clamp(1.7rem,4vw,2.4rem);margin-bottom:.6rem}
+.sub{color:var(--muted);max-width:60ch;margin:0 0 1.6rem}
+.tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.2rem}
+.tabs button{font:inherit;font-weight:500;padding:.45rem .95rem;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.kits{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1rem}
+.kit{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--green);border-radius:6px;padding:1rem 1.1rem}
+.kit h3{font-size:1.2rem;margin-bottom:.3rem}
+.kit p{margin:0;color:var(--muted);font-size:.95rem}
+.kit .tag{display:inline-block;margin-top:.7rem;font-size:.8rem;color:var(--green);font-weight:600}
+.kit.hidden{display:none}
+.rows{display:grid;gap:0}
+.row{display:grid;grid-template-columns:7.5rem 1fr;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line)}
+.row time{color:var(--muted);font-size:.9rem}
+.row h3{font-size:1.25rem;margin-bottom:.2rem}
+.row p{margin:0;color:var(--muted)}
+.about{display:grid;grid-template-columns:1.3fr 1fr;gap:2rem}
+.facts{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:1.2rem 1.3rem}
+.facts dt{font-weight:600;margin-top:.8rem}
+.facts dt:first-child{margin-top:0}
+.facts dd{margin:0;color:var(--muted)}
+.btn{display:inline-block;background:var(--amber);color:var(--amber-ink);font-weight:600;text-decoration:none;padding:.8rem 1.4rem;border-radius:6px;margin-top:.8rem}
+footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+.note{background:var(--accent-soft);border:1px dashed var(--amber);padding:.6rem .9rem;border-radius:6px;font-size:.9rem;margin-bottom:1.4rem}
+@media (max-width:720px){
+  .panel,.about{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr;gap:.2rem}
+  .bus{grid-template-columns:1fr 1fr}
+  .node span.lbl{font-size:.95rem}
+  nav a{margin:0 1rem 0 0}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
 </head>
 <body>
-    <h1> Hello World!!</h1>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#top">[Your Name], Power Sector Advisory</a>
+    <nav aria-label="Main"><a href="#expertise">Expertise</a><a href="#toolkits">Toolkits</a><a href="#insights">Insights</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <h1>Power projects that clear the regulator.</h1>
+      <p class="lead">Technical studies, DPRs and regulatory toolkits for India’s power sector: renewable energy, battery storage and green hydrogen. Written by an electrical engineer who reviews these documents for a living.</p>
+
+      <div class="sld" id="expertise">
+        <p class="sld-title">Areas I work in. Select one to see what I look at and what you get.</p>
+        <div class="bus" role="tablist" aria-label="Areas of expertise">
+          <button class="node" role="tab" aria-selected="true" data-k="re"><span class="dot" aria-hidden="true">☀</span><span class="lbl">RE farms</span></button>
+          <button class="node" role="tab" aria-selected="false" data-k="bess"><span class="dot" aria-hidden="true">▮</span><span class="lbl">Battery storage</span></button>
+          <button class="node" role="tab" aria-selected="false" data-k="h2"><span class="dot" aria-hidden="true">H₂</span><span class="lbl">Green hydrogen</span></button>
+          <button class="node" role="tab" aria-selected="false" data-k="dpr"><span class="dot" aria-hidden="true">≡</span><span class="lbl">DPRs and studies</span></button>
+          <button class="node" role="tab" aria-selected="false" data-k="reg"><span class="dot" aria-hidden="true">§</span><span class="lbl">Policy and regulation</span></button>
+        </div>
+        <div class="panel" role="tabpanel" id="panel" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <section id="toolkits">
+      <h2>Regulatory toolkits</h2>
+      <p class="sub">Plain-language guides that turn long regulations into checklists, flow charts and decision aids.</p>
+      <div class="note">Sample titles. Replace each card with your own toolkit and link it to a PDF, spreadsheet or page.</div>
+      <div class="tabs" role="group" aria-label="Filter toolkits">
+        <button aria-pressed="true" data-f="all">All</button>
+        <button aria-pressed="false" data-f="policy">Policy guides</button>
+        <button aria-pressed="false" data-f="checklist">Checklists</button>
+        <button aria-pressed="false" data-f="tracker">Trackers</button>
+      </div>
+      <div class="kits">
+        <article class="kit" data-c="policy"><h3>Green hydrogen policy map</h3><p>Who approves what, which incentives apply, and how national and state policies fit together.</p><span class="tag">Policy guide</span></article>
+        <article class="kit" data-c="policy"><h3>Open access and grid connectivity</h3><p>A step-by-step view of GNA, open access and green energy open access for a new plant or buyer.</p><span class="tag">Policy guide</span></article>
+        <article class="kit" data-c="checklist"><h3>DPR scrutiny checklist</h3><p>The technical, financial and regulatory points I check before a DPR goes for approval.</p><span class="tag">Checklist</span></article>
+        <article class="kit" data-c="checklist"><h3>BESS pre-feasibility checklist</h3><p>Use case, sizing inputs, connection point, revenue stack and risks, on one page.</p><span class="tag">Checklist</span></article>
+        <article class="kit" data-c="tracker"><h3>Regulatory change tracker</h3><p>Monthly summary of new CERC, SERC and ministry orders that affect developers and utilities.</p><span class="tag">Tracker</span></article>
+        <article class="kit" data-c="tracker"><h3>State RE policy comparison</h3><p>Side-by-side table of state incentives, charges and approvals for solar, wind and storage.</p><span class="tag">Tracker</span></article>
+      </div>
+    </section>
+
+    <section id="insights">
+      <h2>Insights</h2>
+      <p class="sub">Short, practical notes. One idea per post, written so a non-specialist can follow.</p>
+      <div class="rows">
+        <div class="row"><time>Add date</time><div><h3>What a regulator looks for in a BESS proposal</h3><p>Draft title. Write 400 words from your own scrutiny experience.</p></div></div>
+        <div class="row"><time>Add date</time><div><h3>Five gaps I keep finding in DPRs</h3><p>Draft title. Strong first post, because it shows your review experience.</p></div></div>
+        <div class="row"><time>Add date</time><div><h3>Green hydrogen: reading the policy in 10 minutes</h3><p>Draft title. Pair it with the policy map toolkit above.</p></div></div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="about">
+        <div>
+          <h2>About</h2>
+          <p>I am an electrical engineer with a master’s degree in Power Electronics and Drives. I work as a regulatory manager in the power sector, preparing and scrutinising DPRs and carrying out pre-feasibility and feasibility studies.</p>
+          <p>I study policies and regulations in depth and turn them into toolkits that others can use without reading hundreds of pages. My goal is to advise developers, utilities and investors in India and abroad.</p>
+        </div>
+        <dl class="facts">
+          <dt>Background</dt><dd>M.Tech / M.E., Power Electronics and Drives</dd>
+          <dt>Current role</dt><dd>Regulatory Manager, power sector</dd>
+          <dt>Focus areas</dt><dd>RE farms, BESS, green hydrogen, DPRs, policy</dd>
+          <dt>Markets</dt><dd>India now; international next</dd>
+        </dl>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Work with me</h2>
+      <p class="sub">Have a project that needs a feasibility study, a DPR review or a regulatory read-through?</p>
+      <a class="btn" href="mailto:your.email@example.com">Email me about a project</a>
+      <p class="sub" style="margin-top:1.2rem">Also on LinkedIn: add your profile link here.</p>
+    </section>
+  </main>
+
+  <footer>© 2026 [Your Name]. Views expressed are personal and do not represent any employer.</footer>
+</div>
+
+<script>
+const data={
+  re:{t:"Renewable energy farms",d:"Solar, wind and hybrid projects from site idea to grid connection.",
+      a:["Resource and yield review","Plant design and equipment selection","Grid connectivity and evacuation","Land, approvals and PPA terms"],
+      b:["Pre-feasibility report","Feasibility study with financials","Technical due diligence"]},
+  bess:{t:"Battery energy storage",d:"Where storage earns its keep, and how large it should be.",
+      a:["Use cases: peak shifting, firming, ancillary services","Sizing in MW and MWh","Technology choice and degradation","Safety, siting and connection"],
+      b:["BESS feasibility study","Tariff and revenue model","Scrutiny of vendor proposals"]},
+  h2:{t:"Green hydrogen",d:"Electrolyser projects and the policy that surrounds them.",
+      a:["Power supply and electrolyser sizing","Water, storage and offtake","Incentives and approvals","Cost of hydrogen under different scenarios"],
+      b:["Project concept note","Feasibility study","Policy and incentive brief"]},
+  dpr:{t:"DPRs and feasibility studies",d:"Preparing detailed project reports and reviewing those prepared by others.",
+      a:["Technical design basis","Cost estimates and financial analysis","Compliance with applicable regulations","Risk register"],
+      b:["New DPR preparation","Independent DPR scrutiny with comments","Gap list with fixes"]},
+  reg:{t:"Policy and regulation",d:"Reading orders, regulations and policies so clients do not have to.",
+      a:["Central and state commission orders","Tariff, open access, connectivity and storage rules","Compliance maps and timelines","Impact notes for developers and utilities"],
+      b:["Regulatory toolkits","Monthly change tracker","Custom regulatory briefs"]}
+};
+const panel=document.getElementById('panel');
+function show(k){
+  const x=data[k];
+  panel.innerHTML='<div><h3>'+x.t+'</h3><p>'+x.d+'</p><h4 style="margin-top:1rem">What I look at</h4><ul>'+x.a.map(i=>'<li>'+i+'</li>').join('')+'</ul></div><div><h4>What you get</h4><ul>'+x.b.map(i=>'<li>'+i+'</li>').join('')+'</ul></div>';
+  document.querySelectorAll('.node').forEach(n=>n.setAttribute('aria-selected',n.dataset.k===k));
+}
+document.querySelectorAll('.node').forEach(n=>n.addEventListener('click',()=>show(n.dataset.k)));
+document.querySelectorAll('.node').forEach(n=>{const s=document.createElement('span');s.className='desc';s.textContent=data[n.dataset.k].d;n.appendChild(s)});
+show('re');
+document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.tabs button').forEach(o=>o.setAttribute('aria-pressed',o===b));
+  document.querySelectorAll('.kit').forEach(c=>c.classList.toggle('hidden',b.dataset.f!=='all'&&c.dataset.c!==b.dataset.f));
+}));
+</script>
 </body>
 </html>
