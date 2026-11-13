@@ -175,7 +175,7 @@ nav a:hover::after,nav a:focus-visible::after{transform:scaleX(1)}
   <div class="wrap">
     <header class="top">
       <a class="brand" href="#top"><svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><path d="M29 22 L32 5 L35 22"/><path d="M29 22 L24 62 M35 22 L40 62"/><path d="M13 13 L51 13 M9 26 L55 26"/><path d="M13 13 L13 18 M51 13 L51 18 M9 26 L9 31 M55 26 L55 31 M32 5 L32 2"/><path d="M29 22 L37 38 M35 22 L27 38 M27 38 L37 38"/><path d="M27 38 L39 54 M37 38 L25 54 M25 54 L39 54"/><path d="M25 54 L40 62 M39 54 L24 62"/><circle class="spark" cx="13" cy="20.5" r="1.7"/><circle class="spark s2" cx="51" cy="20.5" r="1.7"/><circle class="spark" cx="9" cy="33.5" r="1.7"/><circle class="spark s2" cx="55" cy="33.5" r="1.7"/></svg><span class="brand-txt">Watt The Fact<span class="tagline">Facts. Figures. And a little Spark.</span></span></a>
-      <nav aria-label="Main"><a href="#expertise">Expertise</a><a href="#toolkits">Toolkits</a><a href="#insights">Insights</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+      <nav aria-label="Main"><a href="#expertise">Expertise</a><a href="#toolkits">Toolkits</a><a href="#insights">Insights</a><a href="#about">About</a><a href="policy.html">Policy library</a><a href="#contact">Contact</a></nav>
     </header>
   </div>
   <div class="wrap stage-copy">
@@ -278,14 +278,14 @@ const data={
   dpr:{t:"DPRs and feasibility studies",d:"Preparing detailed project reports and reviewing those prepared by others.",
       a:["Technical design basis","Cost estimates and financial analysis","Compliance with applicable regulations","Risk register"],
       b:["New DPR preparation","Independent DPR scrutiny with comments","Gap list with fixes"]},
-  reg:{t:"Policy and regulation",d:"Reading orders, regulations and policies so clients do not have to.",
+  reg:{link:"policy.html",t:"Policy and regulation",d:"Reading orders, regulations and policies so clients do not have to.",
       a:["Central and state commission orders","Tariff, open access, connectivity and storage rules","Compliance maps and timelines","Impact notes for developers and utilities"],
       b:["Regulatory toolkits","Monthly change tracker","Custom regulatory briefs"]}
 };
 const panel=document.getElementById('panel');
 function show(k){
   const x=data[k];
-  panel.innerHTML='<div><h3>'+x.t+'</h3><p>'+x.d+'</p><h4 style="margin-top:1rem">What I look at</h4><ul>'+x.a.map(i=>'<li>'+i+'</li>').join('')+'</ul></div><div><h4>What you get</h4><ul>'+x.b.map(i=>'<li>'+i+'</li>').join('')+'</ul></div>';
+  panel.innerHTML='<div><h3>'+x.t+'</h3><p>'+x.d+'</p><h4 style="margin-top:1rem">What I look at</h4><ul>'+x.a.map(i=>'<li>'+i+'</li>').join('')+'</ul>'+(x.link?'<a class="btn" href="'+x.link+'" style="margin-top:1.2rem">Open the policy library &rarr;</a>':'')+'</div><div><h4>What you get</h4><ul>'+x.b.map(i=>'<li>'+i+'</li>').join('')+'</ul></div>';
   document.querySelectorAll('.node').forEach(n=>n.setAttribute('aria-selected',n.dataset.k===k));
 }
 document.querySelectorAll('.node').forEach(n=>n.addEventListener('click',()=>show(n.dataset.k)));
