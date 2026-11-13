@@ -113,7 +113,7 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px sol
 .acc{padding:0;border:0}
 .acc-h{margin:0;font-size:1rem}
 .acc-btn{position:relative;display:flex;align-items:flex-end;width:100%;min-height:clamp(150px,24vh,240px);padding:0;border:0;border-top:1px solid rgba(255,255,255,.18);color:#fff;font:inherit;text-align:left;cursor:pointer;overflow:hidden;background:#13303A}
-.acc-btn::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(6,20,26,.5),rgba(6,20,26,.72)),url("https://commons.wikimedia.org/wiki/Special:FilePath/Power_County_Wind_Farm_002.jpg?width=2400");background-size:cover;background-position:center var(--pos,50%);transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.acc-btn::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(6,20,26,.5),rgba(6,20,26,.72)),url("https://images.pexels.com/photos/28912010/pexels-photo-28912010/free-photo-of-high-voltage-power-lines-at-sunset.jpeg?auto=compress&cs=tinysrgb&w=2400");background-size:cover;background-position:center var(--pos,50%);transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
 .acc-btn:hover::before{transform:scale(1.05)}
 .acc-row{position:relative;display:flex;justify-content:space-between;align-items:center;gap:1rem;width:100%;max-width:1200px;margin:0 auto;padding:0 1.25rem 1.8rem}
 .acc-t{font-family:"Newsreader",Georgia,serif;font-weight:600;font-size:clamp(1.8rem,5vw,3.4rem);line-height:1.08;letter-spacing:-.01em;text-shadow:0 2px 20px rgba(0,0,0,.35)}
@@ -139,17 +139,16 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px sol
 .brand{flex-direction:row;align-items:center;gap:.75rem}
 .brand-txt{display:flex;flex-direction:column;line-height:1.15}
 .brand .tagline{color:#FFB15C;opacity:1}
-.mark{flex:none;width:2.4rem;height:2.4rem;fill:#F28A1C}
-.mark .rotor{transform-origin:32px 32px;animation:spin 9s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.stage-sun{position:absolute;inset:0;overflow:hidden;pointer-events:none;background:radial-gradient(70vmax 60vmax at 88% 112%,rgba(255,128,20,.62),rgba(255,128,20,0) 62%);animation:glow 7s ease-in-out infinite alternate}
-.stage-sun::before{content:"";position:absolute;right:9vw;bottom:-17vmin;width:36vmin;height:36vmin;border-radius:50%;background:radial-gradient(circle at 50% 42%,#FFC878 0,#FF9A2E 40%,#F28A1C 70%,rgba(242,138,28,.0) 100%);box-shadow:0 0 90px 30px rgba(242,138,28,.45)}
-@keyframes glow{from{opacity:.88}to{opacity:1}}
+.mark{flex:none;width:2.6rem;height:2.6rem;fill:none;stroke:#F28A1C;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.mark .spark{fill:#F28A1C;stroke:none;animation:zap 2.4s ease-in-out infinite}
+.mark .spark.s2{animation-delay:1.2s}
+@keyframes zap{0%,100%{opacity:.25;transform:scale(.8)}50%{opacity:1;transform:scale(1.25)}}
+.mark .spark{transform-box:fill-box;transform-origin:center}
 .ghost{background:#F28A1C;border-color:#F28A1C;color:#1A1004;display:inline-flex;align-items:center;gap:.7rem;box-shadow:0 10px 30px rgba(242,138,28,.35)}
 .ghost:hover,.ghost:focus-visible{background:#FFB15C;border-color:#FFB15C;color:#1A1004}
 .ghost .arr{display:inline-block;animation:bob 1.6s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translateY(-2px)}50%{transform:translateY(4px)}}
-.acc-btn::before{background-image:linear-gradient(100deg,rgba(242,138,28,.5),rgba(242,138,28,0) 58%),linear-gradient(rgba(6,20,26,.5),rgba(6,20,26,.72)),url("https://commons.wikimedia.org/wiki/Special:FilePath/Power_County_Wind_Farm_002.jpg?width=2400")}
+.acc-btn::before{background-image:linear-gradient(100deg,rgba(242,138,28,.5),rgba(242,138,28,0) 58%),linear-gradient(rgba(6,20,26,.5),rgba(6,20,26,.72)),url("https://images.pexels.com/photos/28912010/pexels-photo-28912010/free-photo-of-high-voltage-power-lines-at-sunset.jpeg?auto=compress&cs=tinysrgb&w=2400")}
 .acc-l{display:flex;align-items:baseline;gap:clamp(.8rem,2.4vw,1.6rem);min-width:0}
 .acc-n{flex:none;font:600 clamp(.85rem,1.6vw,1rem)/1 "Inter",sans-serif;letter-spacing:.22em;color:#FFA640}
 .acc-t{background:linear-gradient(#F28A1C,#F28A1C) no-repeat 0 100%/0 4px;padding-bottom:.3rem;transition:background-size .55s cubic-bezier(.2,.7,.2,1),color .3s}
@@ -165,19 +164,18 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px sol
 .panel h3,.about h2{text-decoration:underline;text-decoration-color:#F28A1C;text-decoration-thickness:3px;text-underline-offset:6px}
 .acc a:not(.btn){color:inherit;text-decoration-color:#F28A1C;text-decoration-thickness:2px;text-underline-offset:3px}
 .acc-row{padding-bottom:1.6rem}
-@media (prefers-reduced-motion:reduce){.mark .rotor,.stage-sun,.ghost .arr{animation:none}}
+@media (prefers-reduced-motion:reduce){.mark .spark,.ghost .arr{animation:none}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
 <div class="progress" id="progress" aria-hidden="true"></div>
 <section class="stage" id="top">
-  <img class="stage-img" src="https://commons.wikimedia.org/wiki/Special:FilePath/Power_County_Wind_Farm_002.jpg?width=2400" alt="Aerial view of a wind farm in Idaho" fetchpriority="high" decoding="async" onerror="this.remove()">
+  <img class="stage-img" src="https://images.pexels.com/photos/28912010/pexels-photo-28912010/free-photo-of-high-voltage-power-lines-at-sunset.jpeg?auto=compress&cs=tinysrgb&w=2400" alt="High-voltage power lines and transformers against a sunset sky" fetchpriority="high" decoding="async" onerror="this.remove()">
   <div class="stage-shade"></div>
-  <div class="stage-sun" aria-hidden="true"></div>
   <div class="wrap">
     <header class="top">
-      <a class="brand" href="#top"><svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><g class="rotor"><path d="M32 32 L29.6 5 Q32 1 34.4 5 Z"/><path d="M32 32 L29.6 5 Q32 1 34.4 5 Z" transform="rotate(120 32 32)"/><path d="M32 32 L29.6 5 Q32 1 34.4 5 Z" transform="rotate(240 32 32)"/></g><circle cx="32" cy="32" r="3.2"/><path d="M31 35 L33 35 L34.2 62 L29.8 62 Z"/></svg><span class="brand-txt">Watt The Fact<span class="tagline">Facts. Figures. And a little Spark.</span></span></a>
+      <a class="brand" href="#top"><svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><path d="M29 22 L32 5 L35 22"/><path d="M29 22 L24 62 M35 22 L40 62"/><path d="M13 13 L51 13 M9 26 L55 26"/><path d="M13 13 L13 18 M51 13 L51 18 M9 26 L9 31 M55 26 L55 31 M32 5 L32 2"/><path d="M29 22 L37 38 M35 22 L27 38 M27 38 L37 38"/><path d="M27 38 L39 54 M37 38 L25 54 M25 54 L39 54"/><path d="M25 54 L40 62 M39 54 L24 62"/><circle class="spark" cx="13" cy="20.5" r="1.7"/><circle class="spark s2" cx="51" cy="20.5" r="1.7"/><circle class="spark" cx="9" cy="33.5" r="1.7"/><circle class="spark s2" cx="55" cy="33.5" r="1.7"/></svg><span class="brand-txt">Watt The Fact<span class="tagline">Facts. Figures. And a little Spark.</span></span></a>
       <nav aria-label="Main"><a href="#expertise">Expertise</a><a href="#toolkits">Toolkits</a><a href="#insights">Insights</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
     </header>
   </div>
@@ -264,7 +262,7 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px sol
 
 <div class="wrap">
 
-  <footer>© 2026 Aqsa Shaikh.<br>Views expressed are personal and do not represent any employer.<br>Cover photo: Power County Wind Farm, Idaho. U.S. Department of Energy (public domain).</footer>
+  <footer>© 2026 Aqsa Shaikh.<br>Views expressed are personal and do not represent any employer.<br>Cover photo: high-voltage power lines at sunset, Austria. Free to use via Pexels.</footer>
 </div>
 
 <script>
