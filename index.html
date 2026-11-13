@@ -112,28 +112,16 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px sol
 .ghost{letter-spacing:.28em;font-size:.85rem;font-weight:600}
 .acc{padding:0;border:0}
 .acc-h{margin:0;font-size:1rem}
-.acc-btn{position:relative;display:flex;align-items:flex-end;width:100%;min-height:clamp(150px,24vh,240px);padding:0;border:0;border-top:1px solid rgba(255,255,255,.18);color:#fff;font:inherit;text-align:left;cursor:pointer;overflow:hidden;background:#13303A}
+.acc-btn{position:relative;display:flex;align-items:flex-end;width:100%;min-height:clamp(150px,24vh,240px);padding:0;border:0;border-top:1px solid rgba(255,255,255,.18);color:#fff;font:inherit;text-align:left;overflow:hidden;background:#13303A}
 .acc-btn::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(6,20,26,.5),rgba(6,20,26,.72)),url("https://images.pexels.com/photos/28912010/pexels-photo-28912010/free-photo-of-high-voltage-power-lines-at-sunset.jpeg?auto=compress&cs=tinysrgb&w=2400");background-size:cover;background-position:center var(--pos,50%);transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
-.acc-btn:hover::before{transform:scale(1.05)}
 .acc-row{position:relative;display:flex;justify-content:space-between;align-items:center;gap:1rem;width:100%;max-width:1200px;margin:0 auto;padding:0 1.25rem 1.8rem}
 .acc-t{font-family:"Newsreader",Georgia,serif;font-weight:600;font-size:clamp(1.8rem,5vw,3.4rem);line-height:1.08;letter-spacing:-.01em;text-shadow:0 2px 20px rgba(0,0,0,.35)}
-.acc-ic{position:relative;flex:none;width:30px;height:30px}
-.acc-ic::before,.acc-ic::after{content:"";position:absolute;left:0;right:0;top:50%;height:1.5px;background:#fff;transition:transform .4s}
-.acc-ic::after{transform:rotate(90deg)}
-.acc.open .acc-ic::after{transform:rotate(0)}
-.acc-panel{display:grid;grid-template-rows:0fr;visibility:hidden;transition:grid-template-rows .55s cubic-bezier(.2,.7,.2,1),visibility 0s .55s;background:var(--bg)}
-.acc.open .acc-panel{grid-template-rows:1fr;visibility:visible;transition-delay:0s}
-.acc-clip{overflow:hidden;min-height:0}
 .acc-inner{max-width:1200px;margin:0 auto;padding:2.5rem 1.25rem 3.2rem}
 .acc .sld{margin-top:0}
-.acc-btn:focus-visible{outline:3px solid var(--amber);outline-offset:-6px}
 /* Orange accents + hidden heading */
 .sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .ghost{border-color:#F28A1C;color:#FFB15C;background:rgba(242,138,28,.1)}
 .ghost:hover,.ghost:focus-visible{background:#F28A1C;border-color:#F28A1C;color:#1A1004}
-.acc-ic::before,.acc-ic::after{background:#F28A1C}
-.acc.open .acc-btn{box-shadow:inset 0 -4px 0 #F28A1C}
-.acc-btn:hover .acc-t{color:#FFB15C}
 /* More orange, a little creativity */
 .progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:60;background:linear-gradient(90deg,#F28A1C,#FFC36B);transform:scaleX(0);transform-origin:left;pointer-events:none}
 .brand{flex-direction:row;align-items:center;gap:.75rem}
@@ -152,12 +140,7 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px sol
 .acc-l{display:flex;align-items:baseline;gap:clamp(.8rem,2.4vw,1.6rem);min-width:0}
 .acc-n{flex:none;font:600 clamp(.85rem,1.6vw,1rem)/1 "Inter",sans-serif;letter-spacing:.22em;color:#FFA640}
 .acc-t{background:linear-gradient(#F28A1C,#F28A1C) no-repeat 0 100%/0 4px;padding-bottom:.3rem;transition:background-size .55s cubic-bezier(.2,.7,.2,1),color .3s}
-.acc-btn:hover .acc-t,.acc.open .acc-t{background-size:100% 4px}
-.acc-ic{width:34px;height:34px;border:1.5px solid #F28A1C;border-radius:50%;transition:background .3s}
-.acc-ic::before,.acc-ic::after{left:9px;right:9px;background:#F28A1C}
-.acc-btn:hover .acc-ic,.acc.open .acc-ic{background:#F28A1C}
-.acc-btn:hover .acc-ic::before,.acc-btn:hover .acc-ic::after,.acc.open .acc-ic::before,.acc.open .acc-ic::after{background:#1A1004}
-.acc-inner{border-top:4px solid #F28A1C}
+.acc-panel{border-top:4px solid #F28A1C;background:var(--bg)}
 .kit{border-left-color:#F28A1C}
 .tabs button[aria-pressed="true"]{background:#F28A1C;border-color:#F28A1C;color:#1A1004}
 .row time{color:#F28A1C;font-weight:600}
@@ -165,6 +148,22 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px sol
 .acc a:not(.btn){color:inherit;text-decoration-color:#F28A1C;text-decoration-thickness:2px;text-underline-offset:3px}
 .acc-row{padding-bottom:1.6rem}
 @media (prefers-reduced-motion:reduce){.mark .spark,.ghost .arr{animation:none}}
+/* Always-open sections + minimal motion */
+.acc.in .acc-t{background-size:100% 4px}
+.js .rv:not(.in){opacity:0;transform:translateY(18px)}
+.js .rv{transition:opacity .8s cubic-bezier(.2,.7,.2,1) var(--d,0ms),transform .8s cubic-bezier(.2,.7,.2,1) var(--d,0ms)}
+.js .rv.done{transition:transform .25s,box-shadow .25s,border-color .2s,background .2s,opacity .2s}
+.kit:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(14,42,51,.14)}
+.btn{transition:transform .25s,box-shadow .25s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(242,138,28,.35)}
+nav a{position:relative}
+nav a::after{content:"";position:absolute;left:0;right:0;bottom:-5px;height:2px;background:#F28A1C;transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+nav a:hover::after,nav a:focus-visible::after{transform:scaleX(1)}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.stage header.top{animation:rise .9s .1s both}
+.stage-copy .ghost{animation:rise .9s .45s both}
+.stage-img{transform:scale(1.12);will-change:transform}
+@media (prefers-reduced-motion:reduce){.js .rv:not(.in){opacity:1;transform:none}.stage header.top,.stage-copy .ghost{animation:none}.stage-img{transform:none}.acc .acc-t{background-size:100% 4px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -187,8 +186,8 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px sol
 
 <main id="main">
     <section class="acc" id="expertise" style="--pos:5%">
-      <h2 class="acc-h"><button type="button" class="acc-btn" id="b-expertise" aria-expanded="false" aria-controls="p-expertise"><span class="acc-row"><span class="acc-l"><span class="acc-n">01</span><span class="acc-t">So, Watt Are You Curious About?</span></span><span class="acc-ic" aria-hidden="true"></span></span></button></h2>
-      <div class="acc-panel" id="p-expertise" role="region" aria-labelledby="b-expertise"><div class="acc-clip"><div class="acc-inner">
+      <h2 class="acc-h"><span class="acc-btn"><span class="acc-row"><span class="acc-l"><span class="acc-n">01</span><span class="acc-t">So, Watt Are You Curious About?</span></span></span></span></h2>
+      <div class="acc-panel"><div class="acc-clip"><div class="acc-inner">
       <div class="sld">
         <div class="bus" role="tablist" aria-label="Areas of expertise">
           <button class="node" role="tab" aria-selected="true" data-k="reg"><span class="dot" aria-hidden="true">§</span><span class="lbl">Policy and regulation</span></button>
@@ -202,8 +201,8 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px sol
       </div></div></div>
     </section>
     <section class="acc" id="toolkits" style="--pos:30%">
-      <h2 class="acc-h"><button type="button" class="acc-btn" id="b-toolkits" aria-expanded="false" aria-controls="p-toolkits"><span class="acc-row"><span class="acc-l"><span class="acc-n">02</span><span class="acc-t">Regulatory toolkits</span></span><span class="acc-ic" aria-hidden="true"></span></span></button></h2>
-      <div class="acc-panel" id="p-toolkits" role="region" aria-labelledby="b-toolkits"><div class="acc-clip"><div class="acc-inner">
+      <h2 class="acc-h"><span class="acc-btn"><span class="acc-row"><span class="acc-l"><span class="acc-n">02</span><span class="acc-t">Regulatory toolkits</span></span></span></span></h2>
+      <div class="acc-panel"><div class="acc-clip"><div class="acc-inner">
       <p class="sub">Plain-language guides that turn long regulations into checklists, flow charts and decision aids.</p>
       <div class="note">Sample titles. Replace each card with your own toolkit and link it to a PDF, spreadsheet or page.</div>
       <div class="tabs" role="group" aria-label="Filter toolkits">
@@ -223,8 +222,8 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px sol
       </div></div></div>
     </section>
     <section class="acc" id="insights" style="--pos:55%">
-      <h2 class="acc-h"><button type="button" class="acc-btn" id="b-insights" aria-expanded="false" aria-controls="p-insights"><span class="acc-row"><span class="acc-l"><span class="acc-n">03</span><span class="acc-t">Insights</span></span><span class="acc-ic" aria-hidden="true"></span></span></button></h2>
-      <div class="acc-panel" id="p-insights" role="region" aria-labelledby="b-insights"><div class="acc-clip"><div class="acc-inner">
+      <h2 class="acc-h"><span class="acc-btn"><span class="acc-row"><span class="acc-l"><span class="acc-n">03</span><span class="acc-t">Insights</span></span></span></span></h2>
+      <div class="acc-panel"><div class="acc-clip"><div class="acc-inner">
       <p class="sub">Short, practical notes. One idea per post, written so a non-specialist can follow.</p>
       <div class="rows">
         <div class="row"><time>Add date</time><div><h3>What a regulator looks for in a BESS proposal</h3><p>Draft title. Write 400 words from your own scrutiny experience.</p></div></div>
@@ -234,8 +233,8 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px sol
       </div></div></div>
     </section>
     <section class="acc" id="about" style="--pos:78%">
-      <h2 class="acc-h"><button type="button" class="acc-btn" id="b-about" aria-expanded="false" aria-controls="p-about"><span class="acc-row"><span class="acc-l"><span class="acc-n">04</span><span class="acc-t">About</span></span><span class="acc-ic" aria-hidden="true"></span></span></button></h2>
-      <div class="acc-panel" id="p-about" role="region" aria-labelledby="b-about"><div class="acc-clip"><div class="acc-inner">
+      <h2 class="acc-h"><span class="acc-btn"><span class="acc-row"><span class="acc-l"><span class="acc-n">04</span><span class="acc-t">About</span></span></span></span></h2>
+      <div class="acc-panel"><div class="acc-clip"><div class="acc-inner">
       <div class="about">
         <div>
           <p>I am an electrical engineer with a master’s degree in Power Electronics and Drives. I work as a regulatory manager in the power sector, preparing and scrutinising DPRs and carrying out pre-feasibility and feasibility studies.</p>
@@ -251,8 +250,8 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px sol
       </div></div></div>
     </section>
     <section class="acc" id="contact" style="--pos:98%">
-      <h2 class="acc-h"><button type="button" class="acc-btn" id="b-contact" aria-expanded="false" aria-controls="p-contact"><span class="acc-row"><span class="acc-l"><span class="acc-n">05</span><span class="acc-t">Contact</span></span><span class="acc-ic" aria-hidden="true"></span></span></button></h2>
-      <div class="acc-panel" id="p-contact" role="region" aria-labelledby="b-contact"><div class="acc-clip"><div class="acc-inner">
+      <h2 class="acc-h"><span class="acc-btn"><span class="acc-row"><span class="acc-l"><span class="acc-n">05</span><span class="acc-t">Contact</span></span></span></span></h2>
+      <div class="acc-panel"><div class="acc-clip"><div class="acc-inner">
       <a class="btn" href="mailto:your.email@example.com">Let’s discuss</a>
       <p class="sub" style="margin-top:1.2rem"><a href="mailto:wattthefact@gmail.com" aria-label="Email Watt The Fact" style="display:inline-flex;align-items:center;gap:.5rem"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" style="flex:none" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 7l9 6.5L21 7"/></svg><span>wattthefact@gmail.com</span></a></p>
       <p class="sub" style="margin-top:.6rem"><a href="https://www.linkedin.com/in/aqsa-shaikh-448517245" target="_blank" rel="noopener noreferrer" aria-label="Aqsa Shaikh on LinkedIn" style="display:inline-flex;align-items:center;gap:.5rem"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" style="flex:none"><path fill="#0A66C2" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span>www.linkedin.com/in/aqsa-shaikh-448517245</span></a></p>
@@ -298,23 +297,33 @@ document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',
 }));
 
 (function(){
-  const accs=[...document.querySelectorAll('.acc')];
   const reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-  function set(a,open){a.classList.toggle('open',open);a.querySelector('.acc-btn').setAttribute('aria-expanded',open)}
-  function toggle(a){
-    const willOpen=!a.classList.contains('open');
-    accs.forEach(x=>set(x,x===a&&willOpen));
-    if(willOpen)setTimeout(()=>a.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'}),reduce?0:80);
-  }
-  accs.forEach(a=>a.querySelector('.acc-btn').addEventListener('click',()=>toggle(a)));
-  document.querySelectorAll('nav a[href^="#"]').forEach(l=>{
-    const t=document.getElementById(l.getAttribute('href').slice(1));
-    if(t&&t.classList.contains('acc'))l.addEventListener('click',e=>{e.preventDefault();if(!t.classList.contains('open'))toggle(t);else t.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'})});
+  document.documentElement.classList.add('js');
+  const els=[...document.querySelectorAll('.acc-row,.sld,.sub,.note,.tabs,.kit,.row,.about>*,.btn')];
+  els.forEach(el=>{
+    el.classList.add('rv');
+    const sibs=[...el.parentElement.children].filter(c=>c.classList.contains('rv'));
+    el.style.setProperty('--d',Math.min(sibs.indexOf(el),6)*80+'ms');
   });
-  const h=location.hash&&document.getElementById(location.hash.slice(1));
-  if(h&&h.classList&&h.classList.contains('acc'))set(h,true);
+  function reveal(el){
+    el.classList.add('in');
+    const sec=el.closest('.acc'); if(sec&&el.classList.contains('acc-row'))sec.classList.add('in');
+    setTimeout(()=>el.classList.add('done'),1100);
+  }
+  if(reduce||!('IntersectionObserver' in window)){els.forEach(reveal);}
+  else{
+    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){reveal(e.target);io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    els.forEach(el=>io.observe(el));
+  }
+  // gentle parallax on the hero photo
+  const img=document.querySelector('.stage-img');
+  if(img&&!reduce){
+    let tick=false;
+    addEventListener('scroll',()=>{if(tick)return;tick=true;requestAnimationFrame(()=>{
+      const y=Math.min(scrollY*.12,48);
+      img.style.transform='translateY('+y+'px) scale(1.12)';tick=false;});},{passive:true});
+  }
 })();
-
 (function(){
   const bar=document.getElementById('progress');
   function upd(){const h=document.documentElement.scrollHeight-innerHeight;bar.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')'}
