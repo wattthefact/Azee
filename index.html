@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Power Sector Regulatory & Technical Advisory</title>
+<title>What the Fact by Azee</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#F2F5F6; --surface:#FFFFFF; --ink:#0E2A33; --muted:#53656D; --line:#D3DDE1;
@@ -25,13 +25,13 @@
 }
 html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.6 "IBM Plex Sans",system-ui,sans-serif}
-h1,h2,h3{font-family:"Newsreader",Georgia,serif;font-weight:600;line-height:1.15;margin:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.6 "DM Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:700;line-height:1.15;margin:0}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--amber);outline-offset:3px}
 .wrap{max-width:1040px;margin:0 auto;padding:0 1.25rem}
 header.top{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 0;gap:1rem;flex-wrap:wrap}
-.brand{font-family:"Newsreader",serif;font-weight:600;font-size:1.9rem;text-decoration:none}
+.brand{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;font-size:1.9rem;text-decoration:none}
 .brand{display:inline-flex;flex-direction:column;line-height:1.15}
 .brand .tagline{display:block;font-size:.68em;font-weight:400;opacity:.75;letter-spacing:.02em;margin-top:2px}
 nav a{margin-left:1.2rem;text-decoration:none;color:var(--muted);font-weight:500}
@@ -115,7 +115,7 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px sol
 .acc-btn{position:relative;display:flex;align-items:flex-end;width:100%;min-height:clamp(150px,24vh,240px);padding:0;border:0;border-top:1px solid rgba(255,255,255,.18);color:#fff;font:inherit;text-align:left;overflow:hidden;background:#13303A}
 .acc-btn::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(6,20,26,.5),rgba(6,20,26,.72)),url("https://images.pexels.com/photos/28912010/pexels-photo-28912010/free-photo-of-high-voltage-power-lines-at-sunset.jpeg?auto=compress&cs=tinysrgb&w=2400");background-size:cover;background-position:center var(--pos,50%);transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
 .acc-row{position:relative;display:flex;justify-content:space-between;align-items:center;gap:1rem;width:100%;max-width:1200px;margin:0 auto;padding:0 1.25rem 1.8rem}
-.acc-t{font-family:"Newsreader",Georgia,serif;font-weight:600;font-size:clamp(1.8rem,5vw,3.4rem);line-height:1.08;letter-spacing:-.01em;text-shadow:0 2px 20px rgba(0,0,0,.35)}
+.acc-t{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:700;font-size:clamp(1.8rem,5vw,3.4rem);line-height:1.08;letter-spacing:-.01em;text-shadow:0 2px 20px rgba(0,0,0,.35)}
 .acc-inner{max-width:1200px;margin:0 auto;padding:2.5rem 1.25rem 3.2rem}
 .acc .sld{margin-top:0}
 /* Orange accents + hidden heading */
@@ -127,6 +127,9 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px sol
 .brand{flex-direction:row;align-items:center;gap:.75rem}
 .brand-txt{display:flex;flex-direction:column;line-height:1.15}
 .brand .tagline{color:#FFB15C;opacity:1}
+.brand-line{display:flex;align-items:baseline;gap:.5rem;flex-wrap:wrap}
+.brand-name{font-size:1.45em;font-weight:800;letter-spacing:-.02em;line-height:1}
+.brand-by{font-size:.55em;font-weight:500;letter-spacing:.04em;opacity:.8}
 .mark{flex:none;width:2.6rem;height:2.6rem;fill:none;stroke:#F28A1C;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 .mark .spark{fill:#F28A1C;stroke:none;animation:zap 2.4s ease-in-out infinite}
 .mark .spark.s2{animation-delay:1.2s}
@@ -174,12 +177,12 @@ nav a:hover::after,nav a:focus-visible::after{transform:scaleX(1)}
   <div class="stage-shade"></div>
   <div class="wrap">
     <header class="top">
-      <a class="brand" href="#top"><svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><path d="M29 22 L32 5 L35 22"/><path d="M29 22 L24 62 M35 22 L40 62"/><path d="M13 13 L51 13 M9 26 L55 26"/><path d="M13 13 L13 18 M51 13 L51 18 M9 26 L9 31 M55 26 L55 31 M32 5 L32 2"/><path d="M29 22 L37 38 M35 22 L27 38 M27 38 L37 38"/><path d="M27 38 L39 54 M37 38 L25 54 M25 54 L39 54"/><path d="M25 54 L40 62 M39 54 L24 62"/><circle class="spark" cx="13" cy="20.5" r="1.7"/><circle class="spark s2" cx="51" cy="20.5" r="1.7"/><circle class="spark" cx="9" cy="33.5" r="1.7"/><circle class="spark s2" cx="55" cy="33.5" r="1.7"/></svg><span class="brand-txt">Watt The Fact<span class="tagline">Facts. Figures. And a little Spark.</span></span></a>
+      <a class="brand" href="#top"><svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><path d="M29 22 L32 5 L35 22"/><path d="M29 22 L24 62 M35 22 L40 62"/><path d="M13 13 L51 13 M9 26 L55 26"/><path d="M13 13 L13 18 M51 13 L51 18 M9 26 L9 31 M55 26 L55 31 M32 5 L32 2"/><path d="M29 22 L37 38 M35 22 L27 38 M27 38 L37 38"/><path d="M27 38 L39 54 M37 38 L25 54 M25 54 L39 54"/><path d="M25 54 L40 62 M39 54 L24 62"/><circle class="spark" cx="13" cy="20.5" r="1.7"/><circle class="spark s2" cx="51" cy="20.5" r="1.7"/><circle class="spark" cx="9" cy="33.5" r="1.7"/><circle class="spark s2" cx="55" cy="33.5" r="1.7"/></svg><span class="brand-txt"><span class="brand-line"><span class="brand-name">What the Fact</span><span class="brand-by">by Azee</span></span><span class="tagline">Facts. Figures. And a little Spark.</span></span></a>
       <nav aria-label="Main"><a href="#expertise">Expertise</a><a href="#toolkits">Toolkits</a><a href="#insights">Insights</a><a href="#about">About</a><a href="policy.html">Policy library</a><a href="#contact">Contact</a></nav>
     </header>
   </div>
   <div class="wrap stage-copy">
-    <h1 class="sr-only">Watt The Fact: Facts. Figures. And a little Spark.</h1>
+    <h1 class="sr-only">What the Fact by Azee: Facts. Figures. And a little Spark.</h1>
     <a class="ghost" href="#main">EXPLORE <span class="arr" aria-hidden="true">&darr;</span></a>
   </div>
 </section>
@@ -241,14 +244,14 @@ nav a:hover::after,nav a:focus-visible::after{transform:scaleX(1)}
       <h2 class="acc-h"><span class="acc-btn"><span class="acc-row"><span class="acc-l"><span class="acc-n">05</span><span class="acc-t">Contact</span></span></span></span></h2>
       <div class="acc-panel"><div class="acc-clip"><div class="acc-inner">
       <a class="btn" href="mailto:your.email@example.com">Let’s discuss</a>
-      <p class="sub" style="margin-top:1.2rem"><a href="mailto:wattthefact@gmail.com" aria-label="Email Watt The Fact" style="display:inline-flex;align-items:center;gap:.5rem"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" style="flex:none" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 7l9 6.5L21 7"/></svg><span>wattthefact@gmail.com</span></a></p>
+      <p class="sub" style="margin-top:1.2rem"><a href="mailto:wattthefact@gmail.com" aria-label="Email What the Fact by Azee" style="display:inline-flex;align-items:center;gap:.5rem"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" style="flex:none" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 7l9 6.5L21 7"/></svg><span>wattthefact@gmail.com</span></a></p>
       </div></div></div>
     </section>
 </main>
 
 <div class="wrap">
 
-  <footer>© 2026 Watt The Fact.<br>Views expressed are personal and do not represent any employer.<br>Cover photo: high-voltage power lines at sunset, Austria. Free to use via Pexels.</footer>
+  <footer>© 2026 What the Fact by Azee.<br>Views expressed are personal and do not represent any employer.<br>Cover photo: high-voltage power lines at sunset, Austria. Free to use via Pexels.</footer>
 </div>
 
 <script>
